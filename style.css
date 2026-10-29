@@ -1,0 +1,86 @@
+/* EarlyCare AI - shared styles. Bootstrap 5.3 handles layout; this file adds the look. */
+:root {
+  --ink: #14232e;
+  --ink-soft: #4b5d6a;
+  --paper: #f3f6f8;
+  --surface: #ffffff;
+  --line: #d9e2e8;
+  --brand: #0b7a75;
+  --brand-dark: #08615d;
+  --risk-low: #2f8f5b;
+  --risk-mid: #c98a12;
+  --risk-high: #c8412f;
+  --bs-body-font-family: "Figtree", system-ui, sans-serif;
+}
+[data-bs-theme="dark"] {
+  --ink: #e8eef2;
+  --ink-soft: #9fb1bd;
+  --paper: #0f1a22;
+  --surface: #162630;
+  --line: #27404e;
+  --brand: #2fb5ad;
+  --brand-dark: #4fd0c8;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--bs-body-font-family); line-height: 1.6; }
+h1, h2, h3, h4, .brand-mark { font-family: "Bricolage Grotesque", "Figtree", sans-serif; letter-spacing: -0.02em; color: var(--ink); }
+p { color: var(--ink-soft); max-width: 65ch; }
+a { color: var(--brand); }
+
+/* Navbar */
+.navbar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.brand-mark { font-weight: 800; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+.brand-mark i { color: var(--brand); }
+.nav-link { color: var(--ink-soft); }
+.nav-link:hover, .nav-link.active { color: var(--brand); }
+
+/* Buttons */
+.btn-brand { background: var(--brand); color: #fff; border: 0; font-weight: 600; }
+.btn-brand:hover, .btn-brand:focus-visible { background: var(--brand-dark); color: #fff; }
+.btn-outline-brand { border: 1.5px solid var(--brand); color: var(--brand); font-weight: 600; }
+.btn-outline-brand:hover { background: var(--brand); color: #fff; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+/* Hero */
+.hero { padding: 5rem 0 4rem; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 800; line-height: 1.08; }
+
+/* Sample report card in the hero */
+.report-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem; }
+.report-card .risk-num { font-size: 3.2rem; font-weight: 800; line-height: 1; color: var(--risk-mid); }
+.factor-row { display: grid; grid-template-columns: 7.5rem 1fr 3rem; gap: .75rem; align-items: center; font-size: .9rem; }
+.factor-bar { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; }
+.factor-bar span { display: block; height: 100%; border-radius: 4px; }
+.up { background: var(--risk-high); }
+.down { background: var(--risk-low); }
+
+/* Sections */
+.section { padding: 4rem 0; }
+.section-alt { background: var(--surface); border-block: 1px solid var(--line); }
+.feature-list { list-style: none; padding: 0; margin: 0; }
+.feature-list li { padding: 1.25rem 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; }
+.feature-list i { font-size: 1.4rem; color: var(--brand); }
+.feature-list h3 { font-size: 1.1rem; margin: 0 0 .25rem; }
+.feature-list p { margin: 0; }
+.step-no { font-family: "Bricolage Grotesque", sans-serif; font-size: 2rem; font-weight: 800; color: var(--brand); }
+
+/* Auth pages */
+.auth-wrap { min-height: calc(100vh - 66px); display: grid; place-items: center; padding: 2rem 1rem; }
+.auth-card { width: 100%; max-width: 440px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 2rem; }
+.form-control { background: var(--paper); color: var(--ink); border-color: var(--line); }
+.form-control:focus { background: var(--paper); color: var(--ink); border-color: var(--brand); box-shadow: 0 0 0 .2rem rgba(11,122,117,.2); }
+
+/* Risk badges */
+.risk-badge { padding: .3rem .8rem; border-radius: 999px; font-weight: 700; font-size: .85rem; color: #fff; }
+.risk-Low { background: var(--risk-low); } .risk-Moderate { background: var(--risk-mid); } .risk-High { background: var(--risk-high); }
+
+/* Footer */
+.footer { border-top: 1px solid var(--line); padding: 2rem 0; font-size: .9rem; color: var(--ink-soft); }
+.disclaimer { border-left: 4px solid var(--risk-mid); padding: .5rem 1rem; background: var(--surface); }
+
+/* One entrance on the hero's bars only; respects reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .factor-bar span { transform-origin: left; animation: grow .9s ease-out both; }
+  @keyframes grow { from { transform: scaleX(0); } }
+}
+@media (max-width: 575px) { .hero { padding: 3rem 0 2rem; } .factor-row { grid-template-columns: 6rem 1fr 2.5rem; } }
